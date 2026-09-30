@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mis 15 Años 🌺</title>
+
+<style>
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        linear-gradient(rgba(255,190,150,.20),rgba(80,190,190,.25)),
+        linear-gradient(to bottom,#68cbd2,#a5e5d5,#ffe3ad);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#543c35;
+}
+
+
+/* =========================
+   SOBRE DE ENTRADA
+========================= */
+
+.pantalla-sobre{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    background:
+        linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.12)),
+        linear-gradient(to bottom,#59c8d0,#ffe1aa);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    transition:1s;
+}
+
+.pantalla-sobre.ocultar{
+    opacity:0;
+    visibility:hidden;
+}
+
+.saludo{
+    color:white;
+    font-size:25px;
+    letter-spacing:4px;
+    margin-bottom:25px;
+    text-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+
+
+/* SOBRE */
+
+.sobre{
+    position:relative;
+    width:320px;
+    height:210px;
+    cursor:pointer;
+    perspective:800px;
+    animation:flotar 3s ease-in-out infinite;
+}
+
+.base-sobre{
+    position:absolute;
+    inset:0;
+    background:#fff5df;
+    border-radius:10px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    overflow:hidden;
+}
+
+.base-sobre:before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-bottom:105px solid #f0c793;
+}
+
+.base-sobre:after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-top:105px solid #ffe4bb;
+}
+
+.tapa{
+    position:absolute;
+    z-index:5;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-top:115px solid #e98986;
+
+    transform-origin:top;
+    transition:1s;
+}
+
+.sobre.abierto .tapa{
+    transform:rotateX(180deg);
+}
+
+.sello{
+    position:absolute;
+    z-index:10;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:62px;
+    height:62px;
+
+    border-radius:50%;
+
+    background:#e9787e;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:29px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+
+.texto-sobre{
+    margin-top:30px;
+    color:white;
+    font-size:18px;
+    animation:brillo 2s infinite;
+}
+
+
+/* ANIMACIONES */
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+@keyframes brillo{
+
+    0%,100%{
+        opacity:.7;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
+
+
+/* =========================
+   FLORES QUE CAEN
+========================= */
+
+.flor{
+    position:fixed;
+    font-size:40px;
+    z-index:3;
+    pointer-events:none;
+
+    animation:caer linear infinite;
+}
+
+.f1{
+    left:5%;
+    animation-duration:9s;
+}
+
+.f2{
+    left:20%;
+    animation-duration:12s;
+    animation-delay:2s;
+}
+
+.f3{
+    left:45%;
+    animation-duration:10s;
+    animation-delay:4s;
+}
+
+.f4{
+    left:70%;
+    animation-duration:13s;
+    animation-delay:1s;
+}
+
+.f5{
+    left:90%;
+    animation-duration:8s;
+    animation-delay:3s;
+}
+
+@keyframes caer{
+
+    0%{
+        transform:translateY(-100px) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   PALMERAS
+========================= */
+
+.palmera{
+    position:fixed;
+    font-size:90px;
+    z-index:1;
+    pointer-events:none;
+
+    animation:moverPalmera 4s ease-in-out infinite;
+}
+
+.palmera1{
+    left:-15px;
+    bottom:0;
+}
+
+.palmera2{
+    right:-15px;
+    top:20px;
+}
+
+@keyframes moverPalmera{
+
+    0%,100%{
+        transform:rotate(-2deg);
+    }
+
+    50%{
+        transform:rotate(3deg);
+    }
+
+}
+
+
+/* =========================
+   INVITACIÓN
+========================= */
+
+.invitacion{
+    display:none;
+    padding:40px 15px;
+    position:relative;
+}
+
+.invitacion.mostrar{
+    display:block;
+    animation:entrada 1.5s ease;
+}
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* =========================
+   TARJETA
+========================= */
+
+.contenido{
+    max-width:760px;
+    margin:auto;
+
+    position:relative;
+    z-index:5;
+
+    background:rgba(255,255,255,.93);
+
+    padding:45px 25px;
+
+    border-radius:40px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.20),
+        inset 0 0 30px rgba(255,196,150,.25);
+
+    text-align:center;
+
+    border:4px solid rgba(255,255,255,.8);
+}
+
+
+/* =========================
+   FOTO
+========================= */
+
+.foto-contenedor{
+    width:190px;
+    height:190px;
+
+    margin:0 auto 25px;
+
+    position:relative;
+}
+
+.foto{
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:8px solid white;
+
+    box-shadow:
+        0 0 0 5px #ef9b8d,
+        0 10px 30px rgba(0,0,0,.25);
+
+    background:#eee;
+
+    animation:fotoEntrada 1.5s ease;
+
+    cursor:pointer;
+}
+
+@keyframes fotoEntrada{
+
+    from{
+        opacity:0;
+        transform:scale(.5) rotate(-20deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
+}
+
+.flor-foto{
+    position:absolute;
+    font-size:45px;
+
+    right:-30px;
+    top:0;
+
+    animation:girar 4s infinite;
+}
+
+@keyframes girar{
+
+    0%,100%{
+        transform:rotate(-10deg);
+    }
+
+    50%{
+        transform:rotate(10deg) scale(1.1);
+    }
+
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.aloha{
+    color:#e77d82;
+
+    font-size:22px;
+
+    letter-spacing:5px;
+
+    animation:brillo 2s infinite;
+}
+
+h1{
+    font-size:70px;
+
+    color:#d96476;
+
+    font-weight:normal;
+
+    margin-top:5px;
+}
+
+.subtitulo{
+    color:#279d9d;
+
+    font-size:25px;
+
+    margin-top:5px;
+}
+
+.nombre{
+    font-size:55px;
+
+    color:#d86d78;
+
+    font-style:italic;
+
+    margin:20px 0;
+}
+
+
+/* =========================
+   ICONOS HAWAIIANOS
+========================= */
+
+.hawai{
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin:25px 0;
+
+    font-size:38px;
+}
+
+.hawai span{
+    animation:saltar 2s infinite;
+}
+
+.hawai span:nth-child(2){
+    animation-delay:.2s;
+}
+
+.hawai span:nth-child(3){
+    animation-delay:.4s;
+}
+
+.hawai span:nth-child(4){
+    animation-delay:.6s;
+}
+
+@keyframes saltar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+
+/* =========================
+   FRASE
+========================= */
+
+.frase{
+    font-size:19px;
+
+    line-height:1.8;
+
+    max-width:580px;
+
+    margin:auto;
+}
+
+
+/* =========================
+   FECHA
+========================= */
+
+.fecha{
+    background:
+        linear-gradient(
+            135deg,
+            #fff0d0,
+            #ffe5c0
+        );
+
+    border-radius:25px;
+
+    padding:20px;
+
+    margin:30px auto;
+
+    max-width:500px;
+
+    font-size:21px;
+
+    color:#289a9a;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.1);
+}
+
+
+/* =========================
+   INFORMACIÓN
+========================= */
+
+.info{
+
+    background:#fff6e5;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    margin-top:30px;
+
+    border:2px dashed #e8a27e;
+}
+
+.info h3{
+
+    color:#d96576;
+
+    font-size:27px;
+
+    margin-bottom:12px;
+}
+
+.info p{
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+.admision{
+
+    margin-top:15px;
+
+    font-size:20px !important;
+
+    color:#299999;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   VESTIMENTA
+========================= */
+
+.vestimenta{
+
+    margin-top:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0f6e9,
+            #fff2d6
+        );
+
+    padding:25px;
+
+    border-radius:25px;
+}
+
+.vestimenta h3{
+
+    color:#d96878;
+
+    font-size:25px;
+
+    margin-bottom:12px;
+}
+
+.iconos{
+
+    font-size:42px;
+
+    margin:12px 0;
+
+    animation:balanceo 3s infinite;
+}
+
+@keyframes balanceo{
+
+    0%,100%{
+        transform:rotate(-2deg);
+    }
+
+    50%{
+        transform:rotate(2deg);
+    }
+
+}
+
+.vestimenta p{
+
+    font-size:18px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.botones{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+}
+
+.boton{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 25px;
+
+    border-radius:35px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.15);
+}
+
+.whatsapp{
+
+    background:#25D366;
+}
+
+.ubicacion{
+
+    background:#299c9c;
+}
+
+.boton:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+}
+
+
+/* =========================
+   BOTÓN DE MÚSICA
+========================= */
+
+.boton-musica{
+
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#e77d82;
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    z-index:100;
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
+}
+
+.boton-musica:hover{
+
+    transform:
+        scale(1.12)
+        rotate(10deg);
+}
+
+.boton-musica.reproduciendo{
+
+    animation:musica 1s infinite;
+}
+
+@keyframes musica{
+
+    0%,100%{
+        box-shadow:
+            0 7px 20px rgba(0,0,0,.25);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 12px rgba(231,125,130,.25),
+            0 7px 20px rgba(0,0,0,.25);
+    }
+
+}
+
+
+/* =========================
+   PIE
+========================= */
+
+.pie{
+
+    margin-top:35px;
+
+    color:#777;
+
+    font-style:italic;
+
+    font-size:17px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    .contenido{
+
+        padding:35px 18px;
+    }
+
+    h1{
+
+        font-size:50px;
+    }
+
+    .nombre{
+
+        font-size:40px;
+    }
+
+    .subtitulo{
+
+        font-size:20px;
+    }
+
+    .foto,
+    .foto-contenedor{
+
+        width:160px;
+        height:160px;
+    }
+
+    .sobre{
+
+        width:290px;
+    }
+
+    .base-sobre{
+
+        width:290px;
+    }
+
+    .tapa{
+
+        border-left-width:145px;
+        border-right-width:145px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MÚSICA
+========================= -->
+
+<audio id="musicaHawai" loop></audio>
+
+<!-- ARCHIVOS OCULTOS -->
+<input
+    type="file"
+    id="selectorFoto"
+    accept="image/*"
+    hidden>
+
+<input
+    type="file"
+    id="selectorMusica"
+    accept="audio/*"
+    hidden>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<div class="pantalla-sobre" id="pantallaSobre">
+
+    <div class="saludo">
+        🌺 ALOHA 🌺
+    </div>
+
+    <div class="sobre" id="sobre">
+
+        <div class="base-sobre"></div>
+
+        <div class="tapa"></div>
+
+        <div class="sello">
+            🌺
+        </div>
+
+    </div>
+
+    <div class="texto-sobre">
+
+        💌 Haz clic en el sobre para abrir la invitación
+
+    </div>
+
+</div>
+
+
+<!-- FLORES -->
+
+<div class="flor f1">🌺</div>
+<div class="flor f2">🌸</div>
+<div class="flor f3">🌺</div>
+<div class="flor f4">🌸</div>
+<div class="flor f5">🌺</div>
+
+
+<!-- PALMERAS -->
+
+<div class="palmera palmera1">
+    🌴
+</div>
+
+<div class="palmera palmera2">
+    🌴
+</div>
+
+
+<!-- =========================
+     INVITACIÓN
+========================= -->
+
+<section
+    class="invitacion"
+    id="invitacion">
+
+<div class="contenido">
+
+
+    <!-- FOTO -->
+
+    <div class="foto-contenedor">
+
+        <img
+            src=""
+            class="foto"
+            id="fotoCumpleanera"
+            alt="Foto de la quinceañera">
+
+        <div class="flor-foto">
+            🌺
+        </div>
+
+    </div>
+
+
+    <!-- TÍTULO -->
+
+    <div class="aloha">
+        🌴 ALOHA 🌺
+    </div>
+
+    <h1>
+        Mis 15
+    </h1>
+
+    <div class="subtitulo">
+        Una tarde tropical llena de magia
+    </div>
+
+
+    <!-- NOMBRE -->
+
+    <div class="nombre">
+        Saori
+    </div>
+
+
+    <!-- DECORACIÓN -->
+
+    <div class="hawai">
+
+        <span>🌺</span>
+        <span>🌴</span>
+        <span>🌊</span>
+        <span>🌸</span>
+
+    </div>
+
+
+    <!-- MENSAJE -->
+
+    <p class="frase">
+
+        Quiero compartir contigo una tarde
+        muy especial, llena de alegría,
+        música, flores y el encanto de
+        una tarde hawaiana.
+
+        <br><br>
+
+        Celebremos juntos la llegada de mis
+        <strong>15 años</strong>.
+
+    </p>
+
+
+    <!-- FECHA -->
+
+    <div class="fecha">
+
+        📅
+
+        <strong>
+            Sábado, 17 de noviembre del 2026
+        </strong>
+
+        <br><br>
+
+        🕗
+
+        <strong>
+            15:00
+        </strong>
+
+    </div>
+
+
+    <!-- UBICACIÓN -->
+
+    <div class="info">
+
+        <h3>
+            📍 Lugar de celebración
+        </h3>
+
+        <p>
+
+            <strong>
+                Calle Tarqui y Onceava Norte
+            </strong>
+
+        </p>
+
+        <p>
+
+            🌺 Te esperamos para disfrutar
+            de una tarde inolvidable.
+
+        </p>
+
+        
+
+    </div>
+
+
+    <!-- VESTIMENTA -->
+
+    <div class="vestimenta">
+
+        <h3>
+            🌺 Código de vestimenta 🌺
+        </h3>
+
+        <div class="iconos">
+
+            👗 🌺 🩴 🌴
+
+        </div>
+
+        <p>
+
+            <strong>
+                ¡Ven con tu mejor estilo hawaiano!
+            </strong>
+
+            <br>
+
+            Flores, colores tropicales,
+            camisas hawaianas y mucho
+            espíritu Aloha.
+
+        </p>
+
+    </div>
+
+
+    <!-- BOTONES -->
+
+    <div class="botones">
+
+        <a
+            class="boton whatsapp"
+            href="https://wa.me/593992705765?text=Hola%20🌺%20Confirmo%20mi%20asistencia%20a%20tus%2015%20a%C3%B1os.%20Seremos%202%20personas."
+            target="_blank">
+
+            📱 Confirmar asistencia
+
+        </a>
+
+
+        <a
+            class="boton ubicacion"
+            href="https://maps.app.goo.gl/8YEsn97yHrHyniCi6"
+            target="_blank">
+
+            📍 Ver ubicación
+
+        </a>
+
+    </div>
+
+
+    <!-- PIE -->
+
+    <div class="pie">
+
+        🌴 Aloha, alegría y recuerdos
+        para toda la vida 🌺
+
+        <br><br>
+
+        💕 Gracias por ser parte de
+        este momento tan especial.
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BOTÓN MÚSICA
+========================= -->
+
+<button
+    class="boton-musica"
+    id="botonMusica"
+    title="Música">
+
+    🎵
+
+</button>
+
+
+<script>
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const sobre =
+document.getElementById("sobre");
+
+const pantallaSobre =
+document.getElementById("pantallaSobre");
+
+const invitacion =
+document.getElementById("invitacion");
+
+const musica =
+document.getElementById("musicaHawai");
+
+const botonMusica =
+document.getElementById("botonMusica");
+
+const selectorFoto =
+document.getElementById("selectorFoto");
+
+const selectorMusica =
+document.getElementById("selectorMusica");
+
+const fotoCumpleanera =
+document.getElementById("fotoCumpleanera");
+
+
+/* =========================
+   CARGAR FOTO
+   HACIENDO CLIC EN EL CÍRCULO
+========================= */
+
+fotoCumpleanera.addEventListener("click", function(){
+
+    selectorFoto.click();
+
+});
+
+selectorFoto.addEventListener("change", function(event){
+
+    const archivo =
+        event.target.files[0];
+
+    if(archivo){
+
+        const lector =
+            new FileReader();
+
+        lector.onload =
+        function(e){
+
+            fotoCumpleanera.src =
+                e.target.result;
+
+        };
+
+        lector.readAsDataURL(archivo);
+
+    }
+
+});
+
+
+/* =========================
+   CARGAR MÚSICA
+========================= */
+
+/*
+   CLIC NORMAL en 🎵:
+   - Si no hay música, permite seleccionar una.
+   - Si ya hay música, reproduce/pausa.
+
+   CLIC DERECHO en 🎵:
+   - Permite cambiar la canción.
+*/
+
+botonMusica.addEventListener(
+    "contextmenu",
+    function(event){
+
+        event.preventDefault();
+
+        selectorMusica.click();
+
+    }
+);
+
+
+selectorMusica.addEventListener(
+    "change",
+    function(event){
+
+        const archivo =
+            event.target.files[0];
+
+        if(archivo){
+
+            const url =
+                URL.createObjectURL(archivo);
+
+            musica.src = url;
+
+            musica.load();
+
+            musica.volume = 0.5;
+
+            musica.play()
+            .then(function(){
+
+                botonMusica.innerHTML =
+                    "🔊";
+
+                botonMusica.classList.add(
+                    "reproduciendo"
+                );
+
+            })
+            .catch(function(error){
+
+                console.log(
+                    "No se pudo reproducir:",
+                    error
+                );
+
+            });
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ABRIR SOBRE
+========================= */
+
+sobre.addEventListener(
+    "click",
+    function(){
+
+        sobre.classList.add(
+            "abierto"
+        );
+
+
+        musica.volume = 0.5;
+
+
+        if(musica.src){
+
+            musica.play()
+            .then(function(){
+
+                botonMusica.innerHTML =
+                    "🔊";
+
+                botonMusica.classList.add(
+                    "reproduciendo"
+                );
+
+            })
+            .catch(function(){
+
+                console.log(
+                    "Selecciona una canción con el botón 🎵."
+                );
+
+            });
+
+        }
+
+
+        setTimeout(
+            function(){
+
+                pantallaSobre.classList.add(
+                    "ocultar"
+                );
+
+                invitacion.classList.add(
+                    "mostrar"
+                );
+
+            },
+            1000
+        );
+
+    }
+);
+
+
+/* =========================
+   BOTÓN DE MÚSICA
+========================= */
+
+botonMusica.addEventListener(
+    "click",
+    function(){
+
+        /*
+          Si todavía no hay canción,
+          abre el selector.
+        */
+
+        if(!musica.src){
+
+            selectorMusica.click();
+
+            return;
+
+        }
+
+
+        /* PAUSAR / REPRODUCIR */
+
+        if(musica.paused){
+
+            musica.play()
+            .then(function(){
+
+                botonMusica.innerHTML =
+                    "🔊";
+
+                botonMusica.classList.add(
+                    "reproduciendo"
+                );
+
+            });
+
+        }
+
+        else{
+
+            musica.pause();
+
+            botonMusica.innerHTML =
+                "🔇";
+
+            botonMusica.classList.remove(
+                "reproduciendo"
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
